@@ -1,6 +1,11 @@
-***Exercicios do Curso tecnico em informática***
+ ## ***Exercicios do Curso tecnico em informática***
 
-### Setup
+## Setup
 
-Instalar o git por este [link](https://git-scm.com/download/win)
+### Instalar o git 
+Baixe o instalador do git por este [link](https://git-scm.com/download/win)
+
+## Clonamdo o repositorio
+ bash
+
 
