@@ -1,1 +1,1 @@
-Exercicios do Curso tecnico em informatica
+***Exercicios do Curso tecnico em informatica***
