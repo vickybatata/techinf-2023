@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>multiplicacao dos numeros</title>
+  
+ 
+ <script type="text/javascript">
+	function multiplica(a, b){
+		let produto = a * b;
+
+		return produto;
+	}
+	multiplica(3, 7);
+	multiplica(6, 5);
+	multiplica(-2, 8);
+
+</script>
+</head>
+<body>
+
+</body>
+</html>
+<script type="text/javascript">
+	let n1, n2, produto, mensagem;
+
+	n1 = Number(prompt("Digite o primeiro número: "));
+	n2 = Number(prompt("Digite o segundo número: "));
+	produto = multiplica(n1, n2);
+	mensagem = `A multiplicação de ${n1} e ${n2} é igual a ${produto}`;
+
+	document.writeln(mensagem);
+
+</script>
