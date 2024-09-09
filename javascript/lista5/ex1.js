@@ -72,3 +72,4 @@ console.log(separar("Linha única sem quebras", "\n"));
 console.log(separar("Primeira linha de um texto. Segunda linha usando template strings. Terceira linha com mais detalhes.", "\n"));
 //cenario 31
 console.log(separar("Lorem ipsum dolor sit amet,consectetur adipiscing elit. Ut enim ad minim veniam.", "\n"));
+//cenario 32
