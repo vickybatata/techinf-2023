@@ -77,4 +77,19 @@ function contentToJsonData(header, content) {
    console.log(contentToJsonData(["produto", "preço"],[["Arroz", "5.00"], ["Feijão", "7.50"]]))
    console.log(contentToJsonData(["Filme", "Diretor", "Ano", "Duração", "Gênero", "País de Origem", "Receita Bruta"],[["Parasita", "Bong Joon-ho", "2019", "132", "Drama", "Coréia do Sul","258.8M"], ["Green Book", "Peter Farrelly", "2018", "130", "Drama", "EUA","321.8M"]]))
 
-   
+   //PrintCsv
+   function printCSV(csvText) {
+    const csvL = csvToLines(csvText);
+    const lToC = linesToColumns(csvL, ';');
+    const exH = extractHeader(lToC);
+    const exC = extractContent(lToC);
+    const contToJSON = contentToJsonData(exH, exC)
+    return contToJSON
+}
+
+function extract() {
+    const fs = require('fs')
+    const csvOscar = fs.readFileSync('./oscar_best_pictures.csv', 'utf-8')
+    return csvOscar
+}
+module.exports = {csvToLines, linesToColumns, extractHeader, extractContent, rowToJSON, contentToJsonData, printCSV, extract}
