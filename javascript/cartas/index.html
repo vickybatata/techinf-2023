@@ -8,34 +8,93 @@
 </head>
 <body>
     <main>
+        <div class="navbar">
+            <div class="info">
+                Cartas restantes:
+                <span id="reaming" class="info">0</span>
+            </div>
+            <div class="info">
+                Deck ID:
+                <span id="deck_id" class="info">_</span>
+
+        </div>
         <div class="canvas">
-            <figure class="cartas">
-                <img src="" class="carta" id="carta">
+            <figure class="cartas" id="carta1">
+
             </figure>
-            <figure class="cartas">
-                <img src="" class="carta" id="carta">
+            <figure class="cartas" id="carta2">
+
             </figure>
-            <figure class="cartas">
-                <img src="" class="carta" id="carta">
+            <figure class="cartas" id="carta3">
+
             </figure>
         </div>
         <div class="butoes">
             <button class="butao">Buscar cartas</button>
-            <button class="butao">Olhar cartas</button>
-            <button class="butao">Reembaralhar</button>
+            <button class="butao" onClick="olharcartas()">Olhar cartas</button>
+            <button class="butao" onClick="Reembaralhar()">Reembaralhar</button>
         </div>
     </main>
     <script>
-        fetch("https://deckofcardsapi.com/api/deck/cj1j26c7xeh4/draw/?count=3")
-        .then(function(respostaApi) {
-        console.log(respostaApi);
-        const data = respostaApi.json()
+        function olharcartas (){
 
-        return data;
+        fetch("https://deckofcardsapi.com/api/deck/3qetepz1hdag/draw/?count=3")
+        .then(function(respostaApi){
+            const obj = respostaApi.json();
+            return obj;
+        }).then(function(jsonData) {
+            const cards = jsonData.cards;
+            console.log(jsonData)
 
+        for(let i=0; i<3; i++){
+            const id = `carta${i+1}`;
+
+            const card = document.getElementById(id);
+            let img = card.querySelector('img');
+
+            if(img == null) {
+               img = document.createElement('img');
+            }
+           
+            img.setAttribute('src', cards[i].image);
+            card.append(img);
+        }
+           
+        
+            // const card1 = document.getElementById("carta1");
+            // const card2 = document.getElementById("carta2");
+            // const card3 = document.getElementById("carta3");
+           
+            // const img1 = document.createElement('img');
+            // const img2 = document.createElement('img');
+            // const img3 = document.createElement('img');
+           
+            // img1.setAttribute('src', cards[0].image);
+            // img2.setAttribute('src', cards[1].image);
+            // img3.setAttribute('src', cards[2].image);
+            
+    
+
+            // card1.append(img1);
+            // card2.append(img2);
+            // card3.append(img3);
+
+            return cards;
+        })
+    }
+    function Reembaralhar(){
+            fetch("https://deckofcardsapi.com/api/deck/3qetepz1hdag/shuffle/")
+            .then(function(respostaApi){
+            const obj = respostaApi.json();
+            return obj;
         }).then(function(jsonData) {
             console.log(jsonData);
+            if(jsonData.success){
+                alert("Reembaralhado com sucesso!");
+            }
         })
+        }
+    
     </script>
 </body>
 </html>

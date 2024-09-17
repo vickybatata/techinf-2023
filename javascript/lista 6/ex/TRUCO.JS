@@ -1,4 +1,4 @@
-fetch('https://deckofcardsapi.com/api/deck/cj1j26c7xeh4/draw/?count=3')
+fetch('https://deckofcardsapi.com/api/deck/3qetepz1hdag/draw/?count=3')
 .then(function(data){
     const obj = data.json();
     return obj;
