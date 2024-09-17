@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <div class="canvas">
+            <figure class="cartas">
+                <img src="" class="carta" id="carta">
+            </figure>
+            <figure class="cartas">
+                <img src="" class="carta" id="carta">
+            </figure>
+            <figure class="cartas">
+                <img src="" class="carta" id="carta">
+            </figure>
+        </div>
+        <div class="butoes">
+            <button class="butao">Buscar cartas</button>
+            <button class="butao">Olhar cartas</button>
+            <button class="butao">Reembaralhar</button>
+        </div>
+    </main>
+    <script>
+        fetch("https://deckofcardsapi.com/api/deck/cj1j26c7xeh4/draw/?count=3")
+        .then(function(respostaApi) {
+        console.log(respostaApi);
+        const data = respostaApi.json()
+
+        return data;
+
+        }).then(function(jsonData) {
+            console.log(jsonData);
+        })
+    </script>
+</body>
+</html>
