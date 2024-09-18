@@ -2,9 +2,12 @@
 function olharcartas() {
 
     fetch("https://deckofcardsapi.com/api/deck/3qetepz1hdag/draw/?count=3")
+
+        
         .then(converterParaJson)
         .then(imprimeTabela)
-        .then(mostrarCartas);
+        .then(mostrarCartas)
+        .catch(erro => alert(erro));
 }
 
 function converterParaJson(data) {
@@ -45,29 +48,32 @@ function mostrarCartas(jsonData) {
     return jsonData;
 
 }
-function getjasonData(respostaApi) {
-    const obj = respostaApi.json();
-    return obj;
-}
+
 function Reembaralhar() {
     fetch("https://deckofcardsapi.com/api/deck/3qetepz1hdag/shuffle/")
-        .then(getjasonData)
-        .then(function (jsonData) {
-            console.log(jsonData);
-            if (jsonData.success) {
-                alert("Reembaralhado com sucesso!");
-            }
-        })
+        .then(converterParaJson)
+        .then(atualizarInfo)
+        .catch(erro => alert(erro));
+
+    // console.log(jsonData);
+    // if (jsonData.success) {
+    //  alert("Reembaralhado com sucesso!");
+    // }
+    // })
 }
 function atualizarInfo(jsonData) {
     if (!jsonData.success)
         throw new Error("Erro ao acessar dados da api");
     const deck_id = jsonData.deck_id;
+    const remaining = jsonData.remaining;
     const info1 = document.getElementById("deck_id");
     const info2 = document.getElementById("remaining");
     info1.innerText = deck_id;
     info2.innerText = remaining;
+    console.log(info2)
 
     return jsonData;
 
 }
+
+
