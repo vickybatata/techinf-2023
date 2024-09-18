@@ -3,8 +3,9 @@ function olharcartas() {
 
     fetch("https://deckofcardsapi.com/api/deck/3qetepz1hdag/draw/?count=3")
 
-        
+
         .then(converterParaJson)
+        .then(atualizarInfo)
         .then(imprimeTabela)
         .then(mostrarCartas)
         .catch(erro => alert(erro));
@@ -70,7 +71,7 @@ function atualizarInfo(jsonData) {
     const info2 = document.getElementById("remaining");
     info1.innerText = deck_id;
     info2.innerText = remaining;
-    console.log(info2)
+    // console.log(info2)
 
     return jsonData;
 
