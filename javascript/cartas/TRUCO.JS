@@ -1,29 +1,59 @@
-let deckId = "3qetepz1hdag";
-let listOfCards = "4C,7H,AS,7D,3C,3H,3S,3D,2C,2H,2S,2D,AC,AH,AD,KC,KH,KS,KD,JC,JH,JS,JD,QC,QH,QS,QD"
+const deckId = "3qetepz1hdag";
+const deck = new Deck (deckId);
 
-function gerarBaralho(){
+function Deck(deckId) {
+    this.deckId = deckId;
+    this.listOfCards = "4C,7H,AS,7D,3C,3H,3S,3D,2C,2H,2S,2D,AC,AH,AD,KC,KH,KS,KD,JC,JH,JS,JD,QC,QH,QS,QD"
+
+    this.gerarBaralho = function () {
+        alert("gerou baralho");
+    }
+
+
+
+    this.olharcartas = function () {
+
+        fetch(`https://deckofcardsapi.com/api/deck/${this.deckId}/draw/?count=3`)
+
+
+            .then(converterParaJson)
+            .then(atualizarInfo)
+            .then(imprimeTabela)
+            .then(mostrarCartas)
+            .catch(erro => alert(erro));
+    }
+
+    this.Reembaralhar = function () {
+        fetch(`https://deckofcardsapi.com/api/deck/${this.deckId}/shuffle/`)
+            .then(converterParaJson)
+            .then(atualizarInfo)
+            .catch(erro => alert(erro));
+
+        // console.log(jsonData);
+        // if (jsonData.success) {
+        alert("Reembaralhado com sucesso!");
+        // }
+        // })
+    }
+}
+
+// const deck1 = new Deck("id1");
+// const deck2 = Deck("id2");
+// console.log(deck1);
+// console.log(deck2);
+// console.log(Deck);
+// console.log(Deck.deckId);
+
+function converterParaJson(data) {
+    const obj = data.json();
+    return obj;
+}
+function gerarBaralho() {
     fetch("https://deckofcardsapi.com/api/deck/new/shuffle/?cards=4C,7H,AS,7D,3C,3H,3S,3D,2C,2H,2S,2D,AC,AH,AD,KC,KH,KS,KD,JC,JH,JS,JD,QC,QH,QS,QD")
         .then(converterParaJson)
         .then(atualizarInfo)
         .catch(erro => alert(erro));
 
-}
-
-function olharcartas() {
-
-    fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=3`)
-
-
-        .then(converterParaJson)
-        .then(atualizarInfo)
-        .then(imprimeTabela)
-        .then(mostrarCartas)
-        .catch(erro => alert(erro));
-}
-
-function converterParaJson(data) {
-    const obj = data.json();
-    return obj;
 }
 
 function imprimeTabela(json) {
@@ -66,7 +96,31 @@ function Reembaralhar() {
 
     // console.log(jsonData);
     // if (jsonData.success) {
-     alert("Reembaralhado com sucesso!");
+    alert("Reembaralhado com sucesso!");
+    // }
+    // })
+}
+function Reembaralhar() {
+    fetch(`https://deckofcardsapi.com/api/deck/${deckId}/shuffle/`)
+        .then(converterParaJson)
+        .then(atualizarInfo)
+        .catch(erro => alert(erro));
+
+    // console.log(jsonData);
+    // if (jsonData.success) {
+    alert("Reembaralhado com sucesso!");
+    // }
+    // })
+}
+function Reembaralhar() {
+    fetch(`https://deckofcardsapi.com/api/deck/${deckId}/shuffle/`)
+        .then(converterParaJson)
+        .then(atualizarInfo)
+        .catch(erro => alert(erro));
+
+    // console.log(jsonData);
+    // if (jsonData.success) {
+    alert("Reembaralhado com sucesso!");
     // }
     // })
 }
