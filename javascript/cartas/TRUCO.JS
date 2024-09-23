@@ -17,7 +17,7 @@ function Deck(deckId) {  //função construtora
 
     this.olharcartas = function () {
 
-        fetch(`https://deckofcardsapi.com/api/deck/${this.deckId}/draw/?count=3`)
+        fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=3`)
 
 
             .then(converterParaJson)
@@ -28,7 +28,7 @@ function Deck(deckId) {  //função construtora
     }
 
     this.Reembaralhar = function () {
-        fetch(`https://deckofcardsapi.com/api/deck/${this.deckId}/shuffle/`)
+        fetch(`https://deckofcardsapi.com/api/deck/${deckId}/shuffle/`)
             .then(converterParaJson)
             .then(atualizarInfo)
             .catch(erro => alert(erro));
