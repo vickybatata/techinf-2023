@@ -1,12 +1,16 @@
-const deckId = "3qetepz1hdag";
+let deckId = "3qetepz1hdag";
 const deck = new Deck (deckId);
 
-function Deck(deckId) {
+function Deck(deckId) {  //função construtora
     this.deckId = deckId;
     this.listOfCards = "4C,7H,AS,7D,3C,3H,3S,3D,2C,2H,2S,2D,AC,AH,AD,KC,KH,KS,KD,JC,JH,JS,JD,QC,QH,QS,QD"
 
     this.gerarBaralho = function () {
-        alert("gerou baralho");
+       
+        fetch(`https://deckofcardsapi.com/api/deck/new/shuffle/?cards=${this.listOfCards}`)        
+        .then(converterParaJson)
+        .then(atualizarInfo)
+        .catch(erro => alert(erro));
     }
 
 
